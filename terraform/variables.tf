@@ -1,13 +1,19 @@
 variable "aws_region" {
-  description = "AWS region for resources"
+  description = "AWS region for resources default signapore"
   type        = string
-  default     = "us-east-1"
+  default     = "ap-southeast-1"
+}
+
+variable "aws_profile" {
+  description = "AWS profile for resources ex. default."
+  type        = string
+  default     = "poc_ssnc"
 }
 
 variable "environment" {
   description = "Environment name (e.g., dev, staging, prod)"
   type        = string
-  default     = "dev"
+  default     = "development"
 }
 
 variable "project_name" {
@@ -25,7 +31,7 @@ variable "vpc_cidr" {
 variable "availability_zones" {
   description = "List of availability zones"
   type        = list(string)
-  default     = ["us-east-1a", "us-east-1b"]
+  default     = ["ap-southeast-1a", "ap-southeast-1b"]
 }
 
 variable "public_subnet_cidrs" {
@@ -43,7 +49,7 @@ variable "private_subnet_cidrs" {
 variable "container_image" {
   description = "Docker image for ECS task (e.g., your-account.dkr.ecr.region.amazonaws.com/hello-world:latest)"
   type        = string
-  default     = "" # Set this to your ECR image URL or Docker Hub image
+  default     = "nginx:latest"
 }
 
 variable "container_port" {
@@ -67,5 +73,5 @@ variable "memory" {
 variable "desired_count" {
   description = "Desired number of ECS tasks"
   type        = number
-  default     = 2
+  default     = 3
 }
