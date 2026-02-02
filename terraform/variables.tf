@@ -75,3 +75,9 @@ variable "desired_count" {
   type        = number
   default     = 3
 }
+
+variable "alert_email" {
+  description = "Email address for alerts"
+  type        = string
+  default     = "xxx@example.com"
+}

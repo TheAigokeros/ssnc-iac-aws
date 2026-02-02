@@ -1,0 +1,1 @@
+1. vpc range private y 10.0.0.0/16. is it good plactice for small app poc?
