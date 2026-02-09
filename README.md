@@ -1,10 +1,10 @@
 # SS&C AWS Infrastructure as Code
 
-This repository contains Terraform infrastructure as code for provisioning a containerized application on AWS. This implementation demonstrates a basic, easy-to-read Terraform design pattern suitable for testing and evaluation purposes.
+This repository contains Terraform configuration for provisioning a containerized application on AWS, designed primarily for **staging and evaluation purposes**. The implementation uses a clear, easy-to-read Terraform design pattern and is **not intended for production use** out of the box.
 
 ## Overview
 
-This infrastructure provisions a production-ready containerized application stack on AWS using:
+This infrastructure provisions a staging-ready containerized application stack on AWS using:
 - **Amazon ECS (Fargate)** for container orchestration
 - **Application Load Balancer (ALB)** for traffic distribution
 - **VPC** with public and private subnets across multiple availability zones
@@ -14,10 +14,10 @@ This infrastructure provisions a production-ready containerized application stac
 
 ## Design Pattern
 
-This implementation follows a **flat, easy-to-read structure** where all resources are organized by function in separate files. This approach prioritizes clarity and maintainability for testing and evaluation purposes.
+This setup follows a **flat, easy-to-read structure** where all resources are organized by function in separate files. This approach prioritizes clarity and maintainability for experimentation and staging environments.
 
-**Note:** In a production environment, this infrastructure would typically be organized into:
-- Separate modules for reusability
+**Note:** For production, recommended improvements include:
+- Using separate modules for reusability
 - Environment-specific configurations (dev, staging, prod)
 - Remote state management with S3 backend
 - Workspace-based or directory-based environment separation
@@ -93,8 +93,8 @@ terraform/
 ├── ecs.tf              # ECS cluster, task definition, service, auto scaling
 ├── iam.tf              # IAM roles for ECS task execution and tasks
 ├── logs.tf             # CloudWatch log group
-├── alarms.tf            # CloudWatch metric alarms
-└── sns.tf               # SNS topic and subscriptions for alerts
+├── alarms.tf           # CloudWatch metric alarms
+└── sns.tf              # SNS topic and subscriptions for alerts
 ```
 
 ## Configuration
@@ -210,8 +210,8 @@ The ECS service is configured with automatic scaling:
 
 ## Notes
 
-- This is a test/evaluation implementation using a flat structure for clarity
-- For production use, consider:
+- This is a staging/test implementation using a flat structure for clarity
+- Not for production. For a production system, strongly consider:
   - Modularizing the codebase
   - Implementing environment-specific configurations
   - Using remote state backend (S3)
@@ -221,4 +221,4 @@ The ECS service is configured with automatic scaling:
 
 ## License
 
-This is a test implementation for SS&C evaluation purposes.
+This is a test/staging implementation for SS&C evaluation purposes.
